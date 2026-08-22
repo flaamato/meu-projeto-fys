@@ -44,6 +44,21 @@ Utilizei a transcrição da live da FYS fornecida no desafio. Ela foi salva na p
 > 
 > **O que dizer ao cliente:** "Você já sacou que a lata tem presença, né? Nós temos um material de ponto de venda super estiloso que foge daquela poluição visual de sempre e vai casar perfeitamente com o seu ambiente. Imagina o combo: seu hambúrguer artesanal com uma FYS gelada. É exatamente a pegada premium e com menos açúcar que atrai o público mais jovem direto pro seu balcão."
 
+## 💻 Como rodar o projeto localmente
+
+Se você quiser testar a interface web do Copiloto na sua máquina, siga os passos:
+
+1. Clone o repositório:
+`git clone https://github.com/flaamato/meu-projeto-fys.git`
+
+2. Instale as dependências:
+`pip install -r requirements.txt`
+
+3. Rode o aplicativo:
+`streamlit run app.py`
+
+*Nota: Você precisará de uma API Key do Google Gemini para rodar as análises.*
+
 ## 🚀 Possíveis melhorias futuras
 - Integrar esse prompt a um bot de WhatsApp para o vendedor usar via áudio.
 - Criar um dashboard onde o gerente de vendas consiga ver quais objeções (preço, pressa, etc.) estão aparecendo mais na rua.

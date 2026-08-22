@@ -32,6 +32,18 @@ Utilizei a transcrição da live da FYS fornecida no desafio. Ela foi salva na p
 > **Por que escolhi essa estratégia:** O cliente quer me dispensar e tem medo de encalhar produto. Vou direto ao ponto falando de grana e giro rápido, sem papo furado.
 > **O que dizer ao cliente:** *"João, sei que seu tempo é dinheiro, então serei rápido. Quem compra Heineken com você já procura um produto premium. FYS tem menos açúcar, atrai esse público e deixa uma margem maior no seu caixa. Vamos fazer um teste pequeno de giro rápido sem risco pra você?"*
 
+**Exemplo 2: Cliente Aberto / Comercial**
+
+**Relato do Vendedor (Input):**
+> "A dona da hamburgueria artesanal adorou a lata. Ela disse: 'Gostei do visual, mas o que vocês têm de material de marketing pra me ajudar a vender isso junto com os meus combos de hambúrguer'"
+
+**Copiloto FYS (Output da IA):**
+> **Classificação:** Aberto / Comercial ("Buscando novidade para atrair público")
+>
+> **Por que escolhi essa estratégia:** Ela já comprou a estética do produto e, por ser uma hamburgueria artesanal, tem o cenário perfeito. A tática é jogar o charme da marca e mostrar como a FYS eleva o nível do combo dela, atraindo um público que foge do básico.
+> 
+> **O que dizer ao cliente:** "Você já sacou que a lata tem presença, né? Nós temos um material de ponto de venda super estiloso que foge daquela poluição visual de sempre e vai casar perfeitamente com o seu ambiente. Imagina o combo: seu hambúrguer artesanal com uma FYS gelada. É exatamente a pegada premium e com menos açúcar que atrai o público mais jovem direto pro seu balcão."
+
 ## 🚀 Possíveis melhorias futuras
 - Integrar esse prompt a um bot de WhatsApp para o vendedor usar via áudio.
 - Criar um dashboard onde o gerente de vendas consiga ver quais objeções (preço, pressa, etc.) estão aparecendo mais na rua.

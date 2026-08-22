@@ -1,39 +1,48 @@
 import streamlit as st
 from google import genai
+import os
 
-# Configuração da página
 st.set_page_config(page_title="Copiloto FYS", page_icon="🥤")
 
 st.title("🥤 Copiloto de Vendas FYS")
 st.markdown("Assistente tático para quebra de objeções no PDV.")
 
-# Campo para o usuário colocar a chave da API com segurança
-api_key = st.text_input("Sua API Key do Gemini (Cole aqui para testar):", type="password")
+api_key = st.text_input("Sua API Key do Gemini:", type="password")
+relato = st.text_area("Relato do Vendedor:", placeholder="Ex: O cliente achou caro e não tem espaço.")
 
-# Caixa de texto para o vendedor
-relato = st.text_area("O que o cliente disse?", 
-                      placeholder="Ex: O dono da padaria disse que tá na correria e que o cliente só toma a marca líder...")
+# Função para ler os arquivos de contexto dinamicamente
+def carregar_contexto():
+    agente_regras = ""
+    conhecimento = ""
+    
+    if os.path.exists("AGENTS.md"):
+        with open("AGENTS.md", "r", encoding="utf-8") as f:
+            agente_regras = f.read()
+            
+    if os.path.exists("knowledge/fys-context.md"):
+        with open("knowledge/fys-context.md", "r", encoding="utf-8") as f:
+            conhecimento = f.read()
+            
+    return agente_regras + "\n\n" + conhecimento
 
 if st.button("Analisar Objeção"):
-    if not relato:
-        st.warning("Por favor, digite o relato do cliente.")
-    elif not api_key:
-        st.error("⚠️ Você precisa inserir uma API Key do Gemini para a IA pensar.")
+    if not relato or not api_key:
+        st.error("⚠️ Preencha o relato e a API Key para continuar.")
     else:
-        with st.spinner("Analisando o perfil do cliente e buscando argumentos da FYS..."):
+        with st.spinner("Lendo AGENTS.md e analisando perfil..."):
             try:
-                # Inicializa o cliente do Gemini
                 client = genai.Client(api_key=api_key)
                 
-                # Aqui nós enviamos o contexto que criamos no projeto para a IA
-                prompt_sistema = "Você é o Copiloto Estratégico da marca FYS (refrigerante com menos açúcar do Grupo Heineken). Analise o relato do vendedor e gere uma resposta tática, classificando o humor do cliente e dando a frase exata para o vendedor falar."
+                # O Sistema agora carrega a inteligência direto dos seus arquivos MD!
+                contexto_completo = carregar_contexto()
+                prompt_sistema = f"Aja estritamente com base nas seguintes regras e base de conhecimento:\n{contexto_completo}\n\nAnalise o seguinte relato:\n{relato}"
                 
                 response = client.models.generate_content(
                     model='gemini-2.5-flash',
-                    contents=[prompt_sistema, relato]
+                    contents=prompt_sistema
                 )
                 
-                st.success("✅ Análise Concluída:")
-                st.write(response.text)
+                st.success("✅ Estratégia Pronta:")
+                st.markdown(response.text)
             except Exception as e:
-                st.error(f"Erro ao conectar com a IA: {e}")
+                st.error(f"Erro de conexão: {e}")

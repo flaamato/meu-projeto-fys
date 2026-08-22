@@ -1,6 +1,6 @@
 # Copiloto de Vendas FYS: Analisador de Humor e Objeções 🥤
 
-Este projeto é a minha entrega para o desafio "Copiloto de Vendas com IA para Atendimento ao Cliente" da DIO. 
+Este projeto é a minha entrega para o desafio "Copiloto de Vendas" da DIO. 
 
 Optei por utilizar o contexto real da marca **FYS** (Grupo HEINEKEN) para criar um assistente focado no time de vendas B2B (Business-to-Business).
 
